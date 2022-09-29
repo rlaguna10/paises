@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<div class="container">
+   <br>
+   <h3 class="pb-3 mb-4 font-italic border-bottom">
+      Paises
+   </h3>
+   <input class="form-control" id="myInput" type="text" placeholder="Filtrar..." [(ngModel)]="filterPost" name="filterPost">
+   <br>
+   <div class="row">
+      <div class="col-md-3" *ngFor="let pais of paises | filter:filterPost | paginate: { itemsPerPage: 12, currentPage: page }">
+         <div class="card mb-3">
+            <img class="card-img-top" src="{{pais.flags.png}}" alt="Card image cap">
+            <div class="card-body">
+               <h5 class="card-title">{{pais.name.common}}</h5>
+               <h6 class="card-subtitle mb-2 text-muted">Capital: {{pais.capital}}</h6>
+               <h6>Idiomas:</h6>
+               <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let len of pais.languages | ObjToArray">{{len}}</li>
+               </ul>
+               <p> </p>
+               <h6>Moneda:</h6>
+               <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let cur of pais.currencies | ObjToArray">{{cur.name}} {{cur.symbol}}</li>
+               </ul>
+               <p></p>
+   
+               <button class="btn btn-outline-dark btn-sm" (click)="verDetalle(pais.name.common)">Ver detalle</button>
+            </div>
+         </div>
+      </div>
+      
+   
+   </div>
+
+   <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+   
+</div>
+
+<app-footer></app-footer>

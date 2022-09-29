@@ -1,0 +1,78 @@
+<app-header></app-header>
+<br>
+<div class="container container-md">
+    <div class="row" *ngFor="let pais of detallePais">
+        <!-- <div class="col-3">
+            <div class="card">
+                <img class="card-img" src="{{pais.flags.png}}" alt="Card image cap">
+            </div>
+        </div> -->
+
+        <div class="col">
+            <div class="card">
+                <!-- <img class="card-img-top" src="{{pais.flags.png}}" alt="Card image cap"> -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card">
+                                <img class="card-img" src="{{pais.flags.png}}" alt="Card image cap">
+                            </div>
+                        </div>
+
+                        <div class="col-9">
+                            <h5 class="card-title">{{pais.name.official}}</h5><br>
+                            <h6 class="card-subtitle mb-2 text-muted">Capital: {{pais.capital}}</h6><br>
+
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Código Alpha 2:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">{{pais.cca2}}</li>
+                            </ul><br>
+                            <h6>Continente:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">{{pais.region}}</li>
+                            </ul><br>
+                            <h6>Subregión:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">{{pais.subregion}}</li>
+                            </ul><br>
+                            <h6>Población:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">{{pais.population}}</li>
+                            </ul><br>
+                            <h6>Idiomas:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let len of pais.languages | ObjToArray">{{len}}</li>
+                            </ul><br>
+                            <h6>Moneda:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item" *ngFor="let cur of pais.currencies | ObjToArray">{{cur.name}} {{cur.symbol}}</li>
+                            </ul><br>
+                            <h6>Fronteras:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">{{pais.borders}}</li>
+                            </ul><br>
+                            <h6>Latitud y Longitud:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item">{{pais.latlng}}</li>
+                            </ul><br>
+                            <h6>Mapa:</h6>
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="{{pais.maps.googleMaps}}">{{pais.maps.googleMaps}}</a></li>
+                            </ul>
+                            <!-- <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                                <iframe src="www.google.com/maps/place/Venezuela" width="100" height="50" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                ></iframe>
+                            </div>--><br> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
